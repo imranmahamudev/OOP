@@ -10,7 +10,7 @@ void main() {
   String? username;
   String displayName = username ?? 'Guest';
   print(displayName);
-  print(displayName?.length); // আউটপুট: 5 (যেহেতু username null ছিল)
+  print(displayName.length); // আউটপুট: 5 (যেহেতু username null ছিল)
 
   // ৩. ??= (Null-aware assignment)
 
