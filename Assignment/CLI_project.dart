@@ -1,26 +1,13 @@
 import 'dart:io';
 
-// ===============================
-// const ব্যবহার (Project Requirement)
-// ===============================
 const String appTitle = "Student Grader v1.0";
 
 void main() {
-  // ===============================
-  // final Set ব্যবহার
-  // ===============================
   final Set<String> availableSubjects = {"Math", "English", "Science", "ICT"};
-
-  // ===============================
-  // List<Map> ব্যবহার
-  // ===============================
   var students = <Map<String, dynamic>>[];
-
   var running = true;
 
-  // ===============================
   // do-while loop ব্যবহার
-  // ===============================
   do {
     print("""
 =========================
@@ -40,9 +27,8 @@ Choose Option:
 
     var choice = stdin.readLineSync();
 
-    // ===============================
     // switch statement ব্যবহার
-    // ===============================
+
     switch (choice) {
       case "1":
         addStudent(students, availableSubjects);
@@ -108,9 +94,8 @@ void addStudent(List<Map<String, dynamic>> students, Set<String> subjects) {
   print("$name added successfully.");
 }
 
-// =================================================
 // Student Selection Helper
-// =================================================
+
 int selectStudent(List<Map<String, dynamic>> students) {
   if (students.isEmpty) {
     print("No students available.");
@@ -132,13 +117,10 @@ int selectStudent(List<Map<String, dynamic>> students) {
     print("Invalid Selection");
     return -1;
   }
-
   return index - 1;
 }
 
-// =================================================
 // Record Score
-// =================================================
 void recordScore(List<Map<String, dynamic>> students) {
   int index = selectStudent(students);
 
@@ -170,9 +152,8 @@ void recordScore(List<Map<String, dynamic>> students) {
   print("Score Added.");
 }
 
-// =================================================
 // Bonus
-// =================================================
+
 void addBonus(List<Map<String, dynamic>> students) {
   int index = selectStudent(students);
 
@@ -194,9 +175,8 @@ void addBonus(List<Map<String, dynamic>> students) {
   }
 }
 
-// =================================================
 // Comment
-// =================================================
+
 void addComment(List<Map<String, dynamic>> students) {
   int index = selectStudent(students);
 
@@ -209,9 +189,8 @@ void addComment(List<Map<String, dynamic>> students) {
   print("Comment Added.");
 }
 
-// =================================================
 // View All Students
-// =================================================
+
 void viewAllStudents(List<Map<String, dynamic>> students) {
   if (students.isEmpty) {
     print("No Students Found.");
@@ -232,9 +211,8 @@ void viewAllStudents(List<Map<String, dynamic>> students) {
   }
 }
 
-// =================================================
 // Average Calculation
-// =================================================
+
 double calculateAverage(Map<String, dynamic> student) {
   List<int> scores = List<int>.from(student["scores"]);
 
@@ -259,9 +237,8 @@ double calculateAverage(Map<String, dynamic> student) {
   return average;
 }
 
-// =================================================
 // Grade Calculation
-// =================================================
+
 String getGrade(double avg) {
   // if else if
   if (avg >= 90) {
@@ -277,9 +254,8 @@ String getGrade(double avg) {
   }
 }
 
-// =================================================
 // Report Card
-// =================================================
+
 void viewReportCard(List<Map<String, dynamic>> students) {
   int index = selectStudent(students);
 
@@ -305,9 +281,9 @@ void viewReportCard(List<Map<String, dynamic>> students) {
   String comment = student["comment"]?.toUpperCase() ?? "NO COMMENT";
 
   print("""
-================================
+
 REPORT CARD
-================================
+
 Name    : ${student["name"]}
 Scores  : ${student["scores"]}
 Bonus   : ${student["bonus"] ?? 0}
@@ -320,9 +296,7 @@ Feedback: $feedback
 """);
 }
 
-// =================================================
 // Class Summary
-// =================================================
 void classSummary(List<Map<String, dynamic>> students) {
   if (students.isEmpty) {
     print("No Students Available.");
